@@ -27,4 +27,9 @@ jobs:
       # Run our unit tests
       - name: Run unit tests
         run: |
-          python test1.py
+          python test.py
+      - name: 'Upload Artifact'
+        uses: actions/upload-artifact@v2
+        with:
+          name: my-artifact
+          path: my_file.txt
