@@ -29,5 +29,4 @@ jobs:
       # Run our unit tests
       - name: Run unit tests
         run: |
-          pytest test.py > output.txt
-          cat output.txt
+          pytest test1.py
