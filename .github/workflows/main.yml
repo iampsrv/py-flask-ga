@@ -36,7 +36,7 @@ jobs:
         run: |
           pytest test1.py
           
-build-and-push-image:
+  build-and-push-image:
     runs-on: ubuntu-latest 
     permissions: 
       contents: read
