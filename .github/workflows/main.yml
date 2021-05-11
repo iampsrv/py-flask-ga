@@ -31,19 +31,26 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-
       # Run our unit tests
       - name: Run unit tests
         run: |
           pytest test1.py
           
-      - name: check docker installed or not
-        run: docker run hello-world
-        
-      - name: Push to Docker Hub
-        uses: docker/build-push-action@v1
-        with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
-          repository: psrv3/github-action
-          tag_with_ref: true
+build-and-push-image:
+    runs-on: ubuntu-latest 
+    permissions: 
+      contents: read
+      packages: write 
+    needs: build
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Build container image
+      uses: docker/build-push-action@v1
+      with: 
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+        registry: docker.pkg.github.com
+        repository: ${{ github.repository }}/py-flask-gha
+        tag_with_sha: true
+        tag_with_ref: true 
