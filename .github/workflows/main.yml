@@ -30,7 +30,6 @@ jobs:
       - name: Run unit tests
         run: |
           pytest test1.py
-          - name: docker login
       - name: docker login
         env:
           DOCKER_USER: ${{ secrets.DOCKER_USER }}   
