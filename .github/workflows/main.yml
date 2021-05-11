@@ -38,4 +38,4 @@ jobs:
           repository: psrv3/github-action
           tag_with_ref: true
       - name: run docker image
-        run: docker run psrv3/github-action
+        run: curl http://127.0.0.1:5000/
