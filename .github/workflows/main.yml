@@ -37,3 +37,5 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
           repository: psrv3/github-action
           tag_with_ref: true
+      - name: run docker image
+        run: docker run psrv3/github-action
