@@ -51,6 +51,6 @@ jobs:
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: docker.pkg.github.com
-        repository: ${{ github.repository }}/py-flask-gha
+        repository: ${{ github.repository }}/python-flask-github-action-package
         tag_with_sha: true
         tag_with_ref: true 
