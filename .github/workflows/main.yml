@@ -30,6 +30,8 @@ jobs:
       - name: Run unit tests
         run: |
           pytest test1.py
+      - name: check docker installed or not
+        run: docker run hello-world
       - name: Push to Docker Hub
         uses: docker/build-push-action@v1
         with:
@@ -37,7 +39,3 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
           repository: psrv3/github-action
           tag_with_ref: true
-      - name: run docker image
-        run: docker run psrv3/github-action
-      - name: check docker image
-        run: curl http://127.0.0.1:5000/
