@@ -33,11 +33,11 @@ jobs:
       - name: docker login
         uses: docker/login-action@v1.9.0
         env:
-          DOCKER_USER: ${{ secrets.DOCKER_USER }}   
-          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}  
-        run: |
-          docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
-          
+          username: ${{ secrets.DOCKER_USER }}   
+          password: ${{ secrets.DOCKER_PASSWORD }}
+        with: 
+           username: username
+           password: password
       - name: docker build python
         run: |
           docker build . -t psrv3/github-action
